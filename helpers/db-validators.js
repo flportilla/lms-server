@@ -17,8 +17,9 @@ const isValidRole = async (role = '') => {
 //Check for duplicated emails
 const isEmailDuplicated = async (email = '') => {
   const dupEmail = await User.findOne({ email })
+
   if (dupEmail) {
-    throw new Error(`The email: ${dupEmail} is already in use`)
+    throw new Error(`The email: ${dupEmail.email} is already in use`)
   }
 }
 

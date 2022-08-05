@@ -1,0 +1,31 @@
+{
+  "name": "rest-server",
+  "version": "0.0.1",
+  "description": "Rest server from the Nodejs course of Udemy",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "flportilla",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.30.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "express-validator": "^6.14.2",
+    "google-auth-library": "^8.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.0",
+    "serve": "^14.0.1",
+    "uuid": "^8.3.2"
+  },
+  "engines": {
+    "npm": ">=8.14.0",
+    "node": ">=16.15.1"
+  }
+}

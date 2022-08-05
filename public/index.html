@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google sign-in</title>
+</head>
+
+<body>
+  <h1>Google sign-in</h1>
+  <hr>
+  <div id="g_id_onload" data-client_id="460749619641-tbua09o00q6ui1u35hhn331beftoaha4.apps.googleusercontent.com"
+    data-callback="handleCredentialResponse" data-auto_prompt="false">
+
+  </div>
+  <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
+    data-shape="rectangular" data-logo_alignment="left">
+  </div>
+
+  <button id="google_sign_out">Sign out</button>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+
+    const url = (window.location.hostname.includes('localhost'))
+      ? 'http://localhost:3030/api/auth/google'
+      : 'https://flportilla-server.herokuapp.com/api/auth/google'
+
+    function handleCredentialResponse(response) {
+      //Google Token: ID_TOKEN
+      // console.log('id token', response.credential);
+      const body = { id_token: response.credential }
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(body)
+      })
+        .then(res => res.json())
+        .then(res => {
+
+          window.localStorage.setItem('email', res.user.email);
+          window.location.reload();
+        })
+        .catch(console.warn)
+    }
+
+    const button = document.getElementById('google_sign_out');
+    button.addEventListener('click', googleSignOut)
+
+    function googleSignOut() {
+      google.accounts.id.disableAutoSelect()
+      google.accounts.id.revoke(window.localStorage.getItem('email'), done => {
+        window.localStorage.clear();
+        window.location.reload();
+
+      })
+    }
+
+
+  </script>
+</body>
+
+
+</html>

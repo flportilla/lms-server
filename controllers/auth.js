@@ -37,9 +37,12 @@ const login = async (req, res = response) => {
         //Generate token
         const token = await tokenGenerator(user.id)
 
+        const { name, role } = user
+
         res.json({
             response: 'Succesfully logged in',
-            user,
+            name,
+            role,
             token
         })
     }

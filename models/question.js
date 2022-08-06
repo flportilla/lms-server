@@ -36,7 +36,7 @@ const QuestionSchema = new Schema({
 })
 
 QuestionSchema.methods.toJSON = function () {
-    const { __v, password, _id, ...question } = this.toObject();
+    const { __v, _id, ...question } = this.toObject();
     question.id = _id
     return question
 }

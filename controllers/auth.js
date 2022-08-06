@@ -7,7 +7,6 @@ const { tokenGenerator } = require("../helpers/jwt-generator")
 const googleVerify = require("../helpers/google-verify")
 
 const login = async (req, res = response) => {
-
     const { email, password } = req.body
 
     try {
@@ -37,14 +36,15 @@ const login = async (req, res = response) => {
         //Generate token
         const token = await tokenGenerator(user.id)
 
-        const { name, role } = user
 
-        res.json({
+        const loginResult = {
             response: 'Succesfully logged in',
-            name,
-            role,
-            token
-        })
+            name: user.name,
+            token,
+            role: user.role
+        }
+
+        res.json(loginResult)
     }
     catch (error) {
         console.error(error)

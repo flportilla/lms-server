@@ -22,7 +22,8 @@ const addQuestion = async (req, res) => {
     ]);
 
     res.json({
-        msg: savedQuestion
+        question: savedQuestion,
+        answer: savedAnswer
     })
 }
 

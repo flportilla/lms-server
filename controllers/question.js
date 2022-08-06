@@ -1,5 +1,5 @@
 
-const { Question, Professor, Answer } = require('../models')
+const { Question, Answer } = require('../models')
 
 const addQuestion = async (req, res) => {
 
@@ -27,7 +27,13 @@ const addQuestion = async (req, res) => {
     })
 }
 
+const getAllQuestions = async (req, res) => {
+
+    const allQuestions = await Question.find()
+    res.json(allQuestions)
+}
 
 module.exports = {
-    addQuestion
+    addQuestion,
+    getAllQuestions
 }

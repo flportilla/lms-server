@@ -36,6 +36,7 @@ const login = async (req, res = response) => {
         //Generate token
         const token = await tokenGenerator(user.id)
 
+
         const loginResult = {
             response: 'Succesfully logged in',
             name: user.name,

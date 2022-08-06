@@ -9,7 +9,7 @@ const AnswerSchema = new Schema({
 })
 
 AnswerSchema.methods.toJSON = function () {
-    const { __v, password, _id, ...answer } = this.toObject();
+    const { __v, _id, ...answer } = this.toObject();
     answer.id = _id
     return answer
 }

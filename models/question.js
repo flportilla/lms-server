@@ -25,10 +25,10 @@ const QuestionSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Professor'
     },
-    answer: {
+    answer: [{
         type: Schema.Types.ObjectId,
         ref: 'Answer'
-    },
+    }],
     test: {
         type: Schema.Types.ObjectId,
         ref: 'Test'

@@ -32,6 +32,10 @@ const QuestionSchema = new Schema({
     test: {
         type: Schema.Types.ObjectId,
         ref: 'Test'
+    },
+    selected: {
+        type: Boolean,
+        default: false
     }
 })
 

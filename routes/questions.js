@@ -1,7 +1,6 @@
 const { Router } = require('express')
 const { check } = require('express-validator');
-const { addQuestion } = require('../controllers/question');
-const { isValidRole } = require('../helpers/db-validators');
+const { addQuestion, getAllQuestions } = require('../controllers/question');
 
 const { fieldValidator, validateJWT, hasRole } = require('../middlewares')
 
@@ -18,5 +17,11 @@ router.post('/', [
     hasRole('PROFESSOR_ROLE'),
     fieldValidator
 ], addQuestion);
+
+router.get('/', [
+    validateJWT,
+    hasRole('PROFESSOR_ROLE'),
+    fieldValidator
+], getAllQuestions);
 
 module.exports = router
